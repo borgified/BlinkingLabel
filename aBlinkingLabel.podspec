@@ -8,17 +8,17 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "BlinkingLabel"
-  s.version          = "0.3.0"
+  s.name             = "aBlinkinglabel"
+  s.version          = "0.0.1"
   s.summary          = "A subclass on UILabel that provides a blink."
   s.description      = <<-DESC
                        This CocoaPod provides the ability to use a UILabel that may be started and stopped blinking.
                        DESC
-  s.homepage         = "https://github.com/obuseme/BlinkingLabel"
+  s.homepage         = "https://github.com/borgified/BlinkingLabel"
   s.license          = 'MIT'
-  s.author           = { "Andy Obusek" => "andyo@aweber.com" }
-  s.source           = { :git => "https://github.com/obuseme/BlinkingLabel.git", :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/obusek'
+  s.author           = { "borgified" => "borgified@gmail.com" }
+  s.source           = { :git => "https://github.com/borgified/BlinkingLabel.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/borgified'
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
