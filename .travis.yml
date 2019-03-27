@@ -13,6 +13,8 @@ jobs:
       install: gem install cocoapods
       script:
         - pod lib lint
+        - echo $PWD
+        - echo "hi $PWD"
     - stage: deploy
       os: osx
       language: swift
@@ -20,5 +22,5 @@ jobs:
       script:
         - pod trunk push --allow-warnings
       after_failure:
-        - ( echo "TRAVIS_TAG: $TRAVIS_TAG" )
-        - ( echo "PODSPEC_VERSION: $(./get_podspec_version.sh aBlinkingLabel.podspec)" )
+        - echo "TRAVIS_TAG $TRAVIS_TAG"
+        - echo "PODSPEC_VERSION $(./get_podspec_version.sh aBlinkingLabel.podspec)"
