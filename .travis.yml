@@ -17,7 +17,7 @@ jobs:
         - pod lib lint
     - stage: versioncheck
       script:
-        - [ "$TRAVIS_TAG" = $(./get_podspec_version.sh aBlinkingLabel.podspec) ]
+        - ( [ "$TRAVIS_TAG" = $(./get_podspec_version.sh aBlinkingLabel.podspec) ] )
     - stage: deploy
       script:
         - pod trunk push --allow-warnings
