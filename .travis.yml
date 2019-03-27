@@ -3,8 +3,9 @@ install:
   - gem install cocoapods
 
 stages:
-  - lint
-  - deploy
+  - name: lint
+  - name: deploy
+    if: branch =~ ^\d+\.\d+\.\d+$
 
 jobs:
   include:
