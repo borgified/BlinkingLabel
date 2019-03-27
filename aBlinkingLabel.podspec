@@ -19,12 +19,10 @@ Pod::Spec.new do |s|
   s.author           = { "borgified" => "borgified@gmail.com" }
   s.source           = { :git => "https://github.com/borgified/BlinkingLabel.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/borgified'
+  s.swift_version    = '4.0'
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'BlinkingLabel' => ['Pod/Assets/*.png']
-  }
 end
