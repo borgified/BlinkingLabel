@@ -11,4 +11,4 @@ language: objective-c
 install:
 - gem install cocoapods
 script:
-  - pod spec lint
+  - pod spec lint --verbose
