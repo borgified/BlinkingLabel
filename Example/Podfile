@@ -1,11 +1,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'BlinkingLabel_Example', :exclusive => true do
+target 'BlinkingLabel_Example' do
   pod "BlinkingLabel", :path => "../"
 end
 
-target 'BlinkingLabel_Tests', :exclusive => true do
+target 'BlinkingLabel_Tests' do
   pod "BlinkingLabel", :path => "../"
 
   
