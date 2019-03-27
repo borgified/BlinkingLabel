@@ -1,23 +1,22 @@
-language: swift
-install:
-  - gem install cocoapods
+language: minimal
 
 stages:
   - name: lint
-  - name: versioncheck
-    if: tag =~ ^\d+\.\d+\.\d+$
   - name: deploy
     if: tag =~ ^\d+\.\d+\.\d+$
-
 
 jobs:
   include:
     - stage: lint
+      language: swift
+      install: gem install cocoapods
       script:
         - pod lib lint
-    - stage: versioncheck
-      script:
-        - ( [ "$TRAVIS_TAG" = $(./get_podspec_version.sh aBlinkingLabel.podspec) ] )
     - stage: deploy
+      language: swift
+      install: gem install cocoapods
       script:
         - pod trunk push --allow-warnings
+      on_failure:
+        - echo "TRAVIS_TAG: $TRAVIS_TAG"
+        - echo "PODSPEC_VERSION: $(./get_podspec_version.sh aBlinkingLabel.podspec)"
