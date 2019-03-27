@@ -9,9 +9,9 @@ stages:
 
 jobs:
   include:
-    - name: lint
+    - stage: lint
       script:
         - pod spec lint
-    - name: deploy
+    - stage: deploy
       script:
         - pod trunk push
