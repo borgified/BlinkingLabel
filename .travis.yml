@@ -5,9 +5,13 @@ script: true
 
 stages:
   - lint
+  - deploy
 
 jobs:
   include:
     - name: lint
       script:
         - pod spec lint
+    - name: deploy
+      script:
+        - pod trunk push
