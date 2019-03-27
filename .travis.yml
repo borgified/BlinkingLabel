@@ -11,7 +11,7 @@ jobs:
   include:
     - stage: lint
       script:
-        - pod spec lint
+        - pod lib lint
     - stage: deploy
       script:
         - pod trunk push --allow-warnings
