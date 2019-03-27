@@ -1,7 +1,6 @@
-language: objective-c
+language: swift
 install:
-- gem install cocoapods
-script: true
+  - gem install cocoapods
 
 stages:
   - lint
