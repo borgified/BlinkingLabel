@@ -3,7 +3,6 @@ install:
   - gem install cocoapods
 
 stages:
-  - dockerversion
   - lint
   - deploy
 
@@ -15,8 +14,3 @@ jobs:
     - stage: deploy
       script:
         - pod trunk push --allow-warnings
-    - stage: dockerversion 
-      os: linux
-      language: minimal
-      script:
-        - docker --version
