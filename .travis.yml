@@ -8,15 +8,17 @@ stages:
 jobs:
   include:
     - stage: lint
+      os: osx
       language: swift
       install: gem install cocoapods
       script:
         - pod lib lint
     - stage: deploy
+      os: osx
       language: swift
       install: gem install cocoapods
       script:
         - pod trunk push --allow-warnings
-      on_failure:
+      after_failure:
         - echo "TRAVIS_TAG: $TRAVIS_TAG"
         - echo "PODSPEC_VERSION: $(./get_podspec_version.sh aBlinkingLabel.podspec)"
