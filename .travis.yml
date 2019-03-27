@@ -13,4 +13,4 @@ jobs:
         - pod spec lint
     - stage: deploy
       script:
-        - pod trunk push
+        - pod trunk push --allow-warnings
