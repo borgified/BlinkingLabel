@@ -1,5 +1,13 @@
 language: objective-c
 install:
 - gem install cocoapods
-script:
-  - pod spec lint --verbose
+script: true
+
+stages:
+  - lint
+
+jobs:
+  include:
+    - name: lint
+      script:
+        - pod spec lint
