@@ -13,16 +13,11 @@ jobs:
       install: gem install cocoapods
       script:
         - pod lib lint
-        - echo $PWD
-        - echo "hi $PWD"
-        - echo "$TRAVIS_TAG"
-        - ./get_podspec_version.sh aBlinkingLabel.podspec
     - stage: deploy
       os: osx
       language: swift
       install: gem install cocoapods
       script:
+        - ( [ $TRAVIS_TAG = $(pod ipc spec aBlinkingLabel.podspec | jq -r .version) ] )
+      deploy:
         - pod trunk push --allow-warnings
-      after_failure:
-        - echo "$TRAVIS_TAG"
-        - ./get_podspec_version.sh aBlinkingLabel.podspec
