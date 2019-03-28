@@ -16,7 +16,10 @@ jobs:
     - stage: deploy
       os: osx
       language: swift
-      install: gem install cocoapods
-      script:
+      install:
+        - gem install cocoapods
+        - brew install jq
+      before_script:
         - ( [ $TRAVIS_TAG = $(pod ipc spec aBlinkingLabel.podspec | jq -r .version) ] )
+      script:
         - pod trunk push --allow-warnings
