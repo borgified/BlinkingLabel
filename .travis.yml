@@ -19,5 +19,4 @@ jobs:
       install: gem install cocoapods
       script:
         - ( [ $TRAVIS_TAG = $(pod ipc spec aBlinkingLabel.podspec | jq -r .version) ] )
-      deploy:
         - pod trunk push --allow-warnings
