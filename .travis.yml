@@ -16,10 +16,11 @@ jobs:
     - stage: deploy
       os: osx
       language: swift
+      env: PODSPEC=aBlinkingLabel.podspec
       install:
         - gem install cocoapods
         - brew install jq
       before_script:
-        - ( [ $TRAVIS_TAG = $(pod ipc spec aBlinkingLabel.podspec | jq -r .version) ] )
+        - ( [ $TRAVIS_TAG != $(pod ipc spec $PODSPEC | jq -r .version) ] ) && echo "$PODSPEC s.version needs to match $TRAVIS_TAG"
       script:
         - pod trunk push --allow-warnings
