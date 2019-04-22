@@ -69,9 +69,7 @@ function push_changes {
 function main {
   prep_workspace
   #time do_stuff
-  curlPodSpec="aBlinkingLabel.podspec"
-  releaseSDKVersion=${VERSION}
-  sed -i.bak -e "s/\(s\.version[ ]*\)=[ ]*\".*\"/\1= \"${releaseSDKVersion}\"/g" ${curPodSpec} && rm ${curlPodSpec}.bak
+  sed -i '' -e "s/\(s\.version[ ]*\)=[ ]*\".*\"/\1= \"4.0.0\"/g" aBlinkingLabel.podspec
   push_changes
 }
 
