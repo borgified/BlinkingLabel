@@ -13,11 +13,11 @@ jobs:
     - stage: test hub
       name: testing hub install
       os: osx
-      language: swift
+      language: minimal
       install:
         - wget ttps://github.com/github/hub/releases/download/v2.11.2/hub-darwin-amd64-2.11.2.tgz -O /tmp/hub-darwin-amd64-2.11.2.tgz
-        - tar -xvf /tmp/hub-darwin-amd64-2.11.2.tgz -C /usr/local/opt
-        - ln -s /usr/local/opt/hub-darwin-amd64-2.11.2/bin/hub /usr/local/bin/hub
+        - sudo tar -xvf /tmp/hub-darwin-amd64-2.11.2.tgz -C /usr/local/opt
+        - sudo ln -s /usr/local/opt/hub-darwin-amd64-2.11.2/bin/hub /usr/local/bin/hub
       script:
         - hub version
     - stage: prep
