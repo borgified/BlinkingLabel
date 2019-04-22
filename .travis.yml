@@ -28,4 +28,4 @@ jobs:
         - brew install hub
         - gem install cocoapods
       script:
-        - ./release.sh
+        - ./run_release.sh
