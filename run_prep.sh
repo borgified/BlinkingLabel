@@ -69,7 +69,7 @@ function push_changes {
 function main {
   prep_workspace
   #time do_stuff
-  sed -i '' -e "s/\(s\.version[ ]*\)=[ ]*\".*\"/\1= \"4.0.0\"/g" aBlinkingLabel.podspec
+  sed -i '' -e "s/\(s\.version[ ]*\)=[ ]*\".*\"/\1= \"${VERSION}\"/g" aBlinkingLabel.podspec
   push_changes
 }
 
