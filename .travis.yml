@@ -1,27 +1,31 @@
 language: minimal
 
 stages:
-  - name: lint
-  - name: deploy
-    if: tag =~ ^\d+\.\d+\.\d+$
+  - name: prep
+    if: env(PREP) = true and type = api
+  - name: release
+    if: env(RELEASE) = true and type = api
 
 jobs:
   include:
-    - stage: lint
+    - stage: prep
+      name: prepare for release
       os: osx
       language: swift
+      env:
+        - VERSION=4.0.0
       install:
-        - gem install cocoapods
+        - brew install hub
       script:
-        - pod lib lint
-    - stage: deploy
+        - ./run_prep.sh
+    - stage: release
+      name: release to cocoapods
       os: osx
-      env: PODSPEC=aBlinkingLabel.podspec
       language: swift
+      env:
+        - VERSION=4.0.0
       install:
+        - brew install hub
         - gem install cocoapods
-        - brew install jq
-      before_script:
-        - if [ $TRAVIS_TAG != $(pod ipc spec $PODSPEC | jq -r .version) ]; then echo "$PODSPEC s.version needs to match $TRAVIS_TAG"; exit 1; fi
       script:
-        - pod trunk push --allow-warnings
+        - ./release.sh
