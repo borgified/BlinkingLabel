@@ -69,7 +69,9 @@ function push_changes {
 function main {
   prep_workspace
   #time do_stuff
-  echo "$VERSION" >> version
+  curlPodSpec=aBlinkingLabel.podspec
+  releaseSDKVersion=$VERSION
+  sed -i '' -e "s/\(s\.version[ ]*\)=[ ]*\".*\"/\1= \"${releaseSDKVersion}\"/g" ${curPodSpec}
   push_changes
 }
 
