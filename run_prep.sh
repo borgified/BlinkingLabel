@@ -71,7 +71,7 @@ function main {
   #time do_stuff
   curlPodSpec="aBlinkingLabel.podspec"
   releaseSDKVersion=${VERSION}
-  sed -i '' -e "s/\(s\.version[ ]*\)=[ ]*\".*\"/\1= \"${releaseSDKVersion}\"/g" ${curPodSpec}
+  sed -i.bak -e "s/\(s\.version[ ]*\)=[ ]*\".*\"/\1= \"${releaseSDKVersion}\"/g" ${curPodSpec} && rm ${curlPodSpec}.bak
   push_changes
 }
 
