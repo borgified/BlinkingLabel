@@ -2,6 +2,7 @@
 set -e
 
 # Needs COCOAPODS_TRUNK_TOKEN defined in job settings
+# Needs VERSION defined in .travis.yml
 
 function release_github {
   CHANGELOG="CHANGELOG.md"
@@ -16,7 +17,7 @@ function release_github {
 
 function release_cocoapods {
   echo "do cocoapods"
-  #pod trunk push --allow-warnings
+  pod trunk push --allow-warnings
 }
 
 function main {
