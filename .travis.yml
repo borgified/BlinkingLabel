@@ -15,7 +15,7 @@ jobs:
       env:
         - VERSION=4.0.0
       install:
-        - brew install hub
+        - brew update && brew install hub
       script:
         - ./run_prep.sh
     - stage: release
@@ -25,7 +25,7 @@ jobs:
       env:
         - VERSION=4.0.0
       install:
-        - brew install hub
+        - brew update && brew install hub
         - gem install cocoapods
       script:
         - ./run_release.sh
