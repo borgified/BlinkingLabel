@@ -16,6 +16,8 @@ function release_github {
 }
 
 function release_cocoapods {
+  git branch ${VERSION} v${VERSION}
+  git push origin ${VERSION}
   pod trunk push aBlinkingLabel.podspec --swift-version=3.0
 }
 
