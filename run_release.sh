@@ -16,8 +16,7 @@ function release_github {
 }
 
 function release_cocoapods {
-  echo "do cocoapods"
-  pod trunk push --allow-warnings
+  pod trunk push aBlinkingLabel.podspec --swift-version=3.0
 }
 
 function main {
