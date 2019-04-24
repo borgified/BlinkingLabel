@@ -15,18 +15,27 @@ function release_github {
   hub release create v${VERSION} -m "Release ${VERSION}" -m "${DESCRIPTION}"
 }
 
+
+MYREPO=${HOME}/workdir/${TRAVIS_REPO_SLUG}
+AUTOBRANCH=${GITHUB_USER}/prepareRelease${VERSION}
+
+function prep_workspace {
+  rm -rf ${MYREPO}
+  mkdir -p ${MYREPO}
+  git clone -b ${TRAVIS_BRANCH} https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG} ${MYREPO}
+}
+
+
 function release_cocoapods {
-  git config user.name borgified
-  git config user.email borgified@gmail.com
-  git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
-  git fetch --unshallow --tags
+  cd ${MYREPO}
   git branch ${VERSION} v${VERSION}
-  hub push origin ${VERSION}
+  git push origin ${VERSION}
   pod trunk push aBlinkingLabel.podspec --swift-version=3.0
 }
 
 function main {
   release_github
+  prep_workspace
   release_cocoapods
 }
 
