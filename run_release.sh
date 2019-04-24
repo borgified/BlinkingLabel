@@ -16,6 +16,8 @@ function release_github {
 }
 
 function release_cocoapods {
+  git config user.name borgified
+  git config user.email borgified@gmail.com
   git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
   git fetch --unshallow --tags
   git branch ${VERSION} v${VERSION}
