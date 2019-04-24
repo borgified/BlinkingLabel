@@ -19,7 +19,7 @@ function release_cocoapods {
   git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
   git fetch --unshallow --tags
   git branch ${VERSION} v${VERSION}
-  git push origin ${VERSION}
+  hub push origin ${VERSION}
   pod trunk push aBlinkingLabel.podspec --swift-version=3.0
 }
 
