@@ -3,27 +3,24 @@ set -e
 
 # needs $GITHUB_TOKEN set
 
-BRANCH=master
+BRANCH=$1
 REPO_SLUG=borgified%2FBlinkingLabel
 
 travis login --org --github-token $GITHUB_TOKEN
 TRAVIS_TOKEN=$(travis token --no-interactive)
 
 body='{
- "request": {
- "message": "Manually triggered prep stage.",
- "branch": "'${BRANCH}'",
- "config": {
-   "merge_mode": "deep_merge",
-   "env": {
-     "HUB": "true",
-     "global" : {
-     "VAR1": "hi",
-     "VAR2": "hello"
-   }
-   }
+  "request": {
+    "message": "Manually triggered prep stage.",
+    "branch": "'${BRANCH}'",
+    "config": {
+      "merge_mode": "deep_merge",
+      "env": {
+        "HUB": "true"
+      }
+    }
   }
-}}'
+}'
 
 curl -s -X POST \
    -H "Content-Type: application/json" \
