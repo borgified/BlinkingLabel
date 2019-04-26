@@ -17,7 +17,6 @@ function release_github {
 
 
 MYREPO=${HOME}/workdir/${TRAVIS_REPO_SLUG}
-AUTOBRANCH=${GITHUB_USER}/prepareRelease${VERSION}
 
 function prep_workspace {
   rm -rf ${MYREPO}
@@ -30,7 +29,7 @@ function release_cocoapods {
   cd ${MYREPO}
   git branch ${VERSION} v${VERSION}
   git push origin ${VERSION}
-  pod trunk push aBlinkingLabel.podspec --swift-version=3.0
+  pod trunk push aBlinkingLabel.podspec --swift-version=4.2
 }
 
 function main {
