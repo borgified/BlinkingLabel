@@ -3,7 +3,11 @@ set -e
 
 # needs $GITHUB_TOKEN set
 
-BRANCH=$1
+# usage: ./trigger_prep.sh <branch>
+# if <branch> not specified, defaults to "master"
+
+
+BRANCH=${1:-master}
 REPO_SLUG=borgified%2FBlinkingLabel
 
 travis login --org --github-token $GITHUB_TOKEN
