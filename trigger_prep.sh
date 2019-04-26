@@ -14,7 +14,6 @@ body='{
     "message": "Manually triggered prep stage.",
     "branch": "'${BRANCH}'",
     "config": {
-      "merge_mode": "deep_merge",
       "env": {
         "HUB": "true"
       }
