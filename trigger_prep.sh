@@ -16,9 +16,11 @@ body='{
  "config": {
    "merge_mode": "deep_merge",
    "env": {
+     "global" : {
      "HUB": "true",
      "VAR1": "hi",
      "VAR2": "hello"
+   }
    }
   }
 }}'
